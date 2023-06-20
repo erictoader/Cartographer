@@ -2,6 +2,8 @@
   <img src="https://github.com/erictoader/Cartographer/assets/99261319/e929edd0-d69b-434b-b434-79e26c2bab88" width="800">
 </p><br>
 
+[![](https://jitpack.io/v/erictoader/Cartographer.svg)](https://jitpack.io/#erictoader/Cartographer)
+
 # 🗺️ Compose Cartographer
 
 Compose Cartographer is a robust and highly optimized Jetpack Compose library, specifically designed to take the complexity out of navigation and screen transitions within your Android applications.<br> 
@@ -17,7 +19,7 @@ Integrating Compose Cartographer into your project is a breeze. Just add the fol
 
 ```gradle
 dependencies {
-    implementation 'com.github.erictoader:compose-cartographer:0.1.0'
+    implementation 'com.github.erictoader:Cartographer:0.1'
 }
 ```
 
