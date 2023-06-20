@@ -1,6 +1,11 @@
+<p align="center">
+  <img src="https://github.com/erictoader/Cartographer/assets/99261319/e929edd0-d69b-434b-b434-79e26c2bab88" width="800">
+</p><br>
+
 # 🗺️ Compose Cartographer
 
-Compose Cartographer is a robust and highly optimized Jetpack Compose library, specifically designed to take the complexity out of navigation and screen transitions within your Android applications. 🚀 It brings simplicity to the forefront, allowing developers to glide through screens while passing objects with an unparalleled level of ease.
+Compose Cartographer is a robust and highly optimized Jetpack Compose library, specifically designed to take the complexity out of navigation and screen transitions within your Android applications.<br> 
+It brings simplicity to the forefront, allowing developers to glide through screens while passing objects with an unparalleled level of ease.
 
 ## 🌟 Features
 - 🌐 Seamless Navigation: Navigate between screens with a single line of code.
