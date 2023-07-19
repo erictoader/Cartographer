@@ -49,8 +49,8 @@ afterEvaluate {
                 from components.release
 
                 groupId = 'com.github.erictoader'
-                artifactId = 'Cartographer'
-                version = '0.1'
+                artifactId = 'cartographer'
+                version = '1.0.0'
             }
         }
     }

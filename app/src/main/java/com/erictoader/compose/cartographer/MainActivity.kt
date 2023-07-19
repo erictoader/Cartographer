@@ -3,13 +3,16 @@ package com.erictoader.compose.cartographer
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.erictoader.compose.cartographer.extensions.NavHost
+import com.erictoader.compose.cartographer.extensions.composable
+import com.erictoader.compose.cartographer.extensions.getArg
+import com.erictoader.compose.cartographer.extensions.navigation
+import com.erictoader.compose.cartographer.ui.screen.DetailsScreen
+import com.erictoader.compose.cartographer.ui.screen.HomeScreen
 import com.erictoader.compose.cartographer.ui.theme.ComposeCartographerTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,30 +20,43 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeCartographerTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
+                Navigator()
             }
         }
     }
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun Navigator() {
+    val navController = rememberNavController()
+
+    NavHost(
+        navController = navController,
+        startDestination = Main::class
+    ) {
+        mainGraph(navController)
+    }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ComposeCartographerTheme {
-        Greeting("Android")
+private fun NavGraphBuilder.mainGraph(navController: NavHostController) {
+    navigation(
+        routeClass = Main::class,
+        startDestinationClass = Main.Home::class,
+    ) {
+        composable(Main.Home::class) {
+            HomeScreen(
+                navController = navController
+            )
+        }
+        composable(Main.Details::class) { backStackEntry ->
+            val asset1 = backStackEntry.getArg<Asset>(named = "primary")
+            val asset2 = backStackEntry.getArg<Asset>(named = "secondary")
+
+            DetailsScreen(
+                navController = navController,
+                primaryAsset = asset1,
+                secondaryAsset = asset2
+            )
+        }
     }
 }

@@ -1,19 +1,14 @@
 package com.erictoader.compose.cartographer
 
-sealed class ScreenDestination(
-    override val name: String,
-    vararg argumentPaths: String
-) : Destination(name, argumentPaths) {
+import com.erictoader.compose.cartographer.annotations.NamedArgument
+import com.erictoader.compose.cartographer.destination.Destination
 
-    object Intro : ScreenDestination("intro") {
-        object SplashScreen : ScreenDestination("splash")
-        object AuthScreen : ScreenDestination("auth")
-    }
-
-    object Main : ScreenDestination("main") {
-        object MoviesScreen : ScreenDestination("movies")
-        object SeriesScreen : ScreenDestination("series")
-        object SettingsScreen : ScreenDestination("settings")
-        object DetailsScreen : ScreenDestination("details")
-    }
+object Main : Destination() {
+    object Home : Destination()
+    data class Details(
+        @NamedArgument("primary")
+        val primaryAsset: Asset,
+        @NamedArgument("secondary")
+        val secondaryAsset: Asset
+    ) : Destination()
 }
